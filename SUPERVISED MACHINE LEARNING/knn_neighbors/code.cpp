@@ -125,12 +125,12 @@ const PROGMEM float matriz[120][5]={
 };
 
 
-uint8_t knn (int k,int etiquetas, int tam_col, int tam_fil, float *datos_prueba){
-  int col;
-  int fil;
-  int i=0;
-  int j; 
-  int etiqueta;
+uint8_t knn (uint8_t k,uint8_t etiquetas, uint8_t tam_col, uint8_t tam_fil, float *datos_prueba){
+uint8_t col;
+uint8_t fil;
+uint8_t i=0;
+uint8_t j; 
+uint8_t etiqueta;
   float aux;
   float aux_eti;
   float sumatoria=0; // sumatoria de la elevación al cuadrado de cada col
@@ -182,13 +182,13 @@ uint8_t knn (int k,int etiquetas, int tam_col, int tam_fil, float *datos_prueba)
 
      for(fil=0;fil<tam_fil;fil++){
          for(col=0;col<tam_col-1;col++){ // menos 1 por ultima columna es etiqueta
-             sumatoria=sumatoria+pow(pgm_read_byte(&matriz[fil][col])-datos_prueba[col],2);
+             sumatoria=sumatoria+pow(pgm_read_float(&matriz[fil][col])-datos_prueba[col],2);
           }
              distancia=sqrt(sumatoria);
              // comparación de nuevo dato con solo la distacia mayor almacenada en matriz_k
               if(distancia<matriz_k[2][k-1]){
                  matriz_k[2][k-1]=distancia;
-                 matriz_k[1][k-1]=pgm_read_byte(&matriz[fil][tam_col-1]);
+                 matriz_k[1][k-1]=pgm_read_float(&matriz[fil][tam_col-1]);
                  //ordenar por metodo burbuja
                  for (i=0;i<k;i++){
                      for(j=i+1;j<k;j++){

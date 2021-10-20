@@ -32,7 +32,6 @@
 
 float test [5]={6.2,2.9,4.3,1.3,2.0}; // creacion de metodo
 uint8_t respuesta;
-extern float prob [4][3];
 int i,j;
 unsigned long start;
 unsigned long elapsed;

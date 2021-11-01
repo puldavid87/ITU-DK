@@ -131,8 +131,8 @@ uint8_t fil;
 uint8_t i=0;
 uint8_t j; 
 uint8_t etiqueta;
-  float aux;
-  float aux_eti;
+  float aux=0;
+  float aux_eti=0;
   float sumatoria=0; // sumatoria de la elevación al cuadrado de cada col
   float distancia=0; // raiz de sumatoria
   
@@ -221,11 +221,12 @@ uint8_t etiqueta;
 
          // buscar la etiqueta con mayor numero de vecinos
 
+           aux_eti=-1.0;
         for(i=0;i<etiquetas-1;i++){
-            if(matriz_etiq[1][i]<matriz_etiq[1][i+1])
-               etiqueta=matriz_etiq[0][i+1];
-            else
+            if(matriz_etiq[1][i]>aux_eti){
               etiqueta=matriz_etiq[0][i];
+              aux_eti=matriz_etiq[1][i];
+            }  
           }
         
         return etiqueta;    

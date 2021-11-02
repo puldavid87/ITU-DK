@@ -1,7 +1,7 @@
 # ML implementation in Arduino environment
 ## PCA low-dimensional training set stored into the Arduino and k-NN algorithm as classifier
 
-Dataset:
+### Dataset:
 
  This dataset presents an intelligent electronic system to detect a person's posture when sitting in a wheelchair. The primary use of the proposed system is to warn an improper posture to prevent major health issues. Available in:
 [Wheelchair human position](https://ieee-dataport.org/open-access/data-set-wheelchair-sensors).
@@ -38,4 +38,9 @@ trainingset=round(trainingset,2)
 trainingset=pd.concat([trainingset,pd.DataFrame(y_train)], axis=1)
 #export to csv file
 trainingset.to_csv('trainingset.csv', sep=';')
+```
+#ML Arduino code
+```
+Follow this repositorie:
+[Supervised ML algorithms](https://github.com/puldavid87/ITU-DK/tree/main/SUPERVISED%20MACHINE%20LEARNING)
 ```

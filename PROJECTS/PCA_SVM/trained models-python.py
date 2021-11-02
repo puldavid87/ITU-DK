@@ -1,29 +1,49 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 25 11:29:38 2021
-
-@author: paur
-"""
-
-from sklearn.decomposition import PCA
-from sklearn.datasets import load_iris
-from micromlgen import port
-
-if __name__ == '__main__':
-    X = load_iris().data
-    pca = PCA(n_components=2, whiten=False).fit(X)
-
-    print(port(pca))
-
-
-
-'T-SNE'
-
-from sklearn.manifold import TSNE
+#Libraries
 import numpy as np
-X = load_iris().data
-tsne = TSNE(n_components=2, perplexity=10, random_state=12).fit_transform(X)
-    print(port(tsne))
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.decomposition import PCA
 
-X = np.array([[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]])
-X_embedded = TSNE(n_components=2, perplexity=10, random_state=12).fit_transform(X)
+#import dataset
+dataset=pd.read_csv('database.csv', sep=';')
+X= dataset.iloc[:307,:-1].values
+y=dataset.iloc[:307,-1].values
+
+#normalize the database
+from sklearn.preprocessing import MinMaxScaler
+sc=MinMaxScaler()
+X=sc.fit_transform(X)
+
+#PCA implementetions
+pca=PCA(n_components=2)
+X=pca.fit_transform(X)
+
+#split the dataset
+X_train, X_test,y_train,y_test=train_test_split(X,y,test_size=0.2, random_state=0)
+#Convert to dataframe
+trainingset =pd.DataFrame(X_train)
+#round to 2 decimals
+trainingset=round(trainingset,2)
+#concat X_train with y_train
+trainingset=pd.concat([trainingset,pd.DataFrame(y_train)], axis=1)
+#export to csv file
+trainingset.to_csv('trainingset.csv', sep=';')
+print(pca.components_)
+
+#SVM MODEL
+from sklearn.svm import SVC
+classifier=SVC(kernel= 'poly', random_state=0)
+classifier.fit(X_train,y_train)
+y_pred=classifier.predict (X_test)
+cm=confusion_matrix(y_test,y_pred) 
+print(cm)
+##########################################################################################################
+#export models
+from micromlgen import port
+#You can copy from the console
+print(port(pca))
+# Also, you can export the model in txt file.
+c_code=SVC(kernel='poly', gamma=0.001).fit(X_train, y_train)
+f = open("output.txt", "a")
+print(port(c_code), file=f)  
+f.close()

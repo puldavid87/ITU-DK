@@ -39,11 +39,11 @@ trainingset=pd.concat([trainingset,pd.DataFrame(y_train)], axis=1)
 #export to csv file
 trainingset.to_csv('trainingset.csv', sep=';')
 ```
-#ML Arduino code
-```
+# ML Arduino code
+
 Follow this repositorie:
 [Supervised ML algorithms](https://github.com/puldavid87/ITU-DK/tree/main/SUPERVISED%20MACHINE%20LEARNING)
-```
+
 #functions.cpp:
 Low-dimensional training set is allocated in FLash memory (const PROGMEM)
 Before to deploy k-NN, normalize the income data

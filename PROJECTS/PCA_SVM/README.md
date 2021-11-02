@@ -5,10 +5,12 @@
 
  This dataset presents an intelligent electronic system to detect a person's posture when sitting in a wheelchair. The primary use of the proposed system is to warn an improper posture to prevent major health issues. Available in:
 [Wheelchair human position](https://ieee-dataport.org/open-access/data-set-wheelchair-sensors).
+Main python library and more information in: [Eloquentarduino] (https://eloquentarduino.github.io/)
 
 ### Python code: 
 ```
 #Libraries
+from micromlgen import port
 ```
 # ML Arduino code
 
@@ -20,4 +22,4 @@ Low-dimensional training set is allocated in FLash memory (const PROGMEM)
 Before to deploy k-NN, normalize the income data
 * y = (x – min) / (max – min)
 
-Classification algorith is followed.
+PCA.h and SVM are export models

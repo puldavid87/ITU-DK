@@ -44,3 +44,8 @@ trainingset.to_csv('trainingset.csv', sep=';')
 Follow this repositorie:
 [Supervised ML algorithms](https://github.com/puldavid87/ITU-DK/tree/main/SUPERVISED%20MACHINE%20LEARNING)
 ```
+#functions.cpp:
+Low-dimensional training set is allocated in FLash memory (const PROGMEM)
+Before to deploy k-NN, normalize the income data
+* y = (x – min) / (max – min)
+Classification algorith is followed.

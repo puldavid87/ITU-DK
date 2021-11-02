@@ -48,4 +48,5 @@ Follow this repositorie:
 Low-dimensional training set is allocated in FLash memory (const PROGMEM)
 Before to deploy k-NN, normalize the income data
 * y = (x – min) / (max – min)
+
 Classification algorith is followed.

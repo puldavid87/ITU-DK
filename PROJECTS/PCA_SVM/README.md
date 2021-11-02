@@ -7,6 +7,9 @@
 [Wheelchair human position](https://ieee-dataport.org/open-access/data-set-wheelchair-sensors).
 Main python library and more information in: [Eloquentarduino] (https://eloquentarduino.github.io/)
 
+### First steps:
+Please, read and follow the python code in this repositorie.
+
 ### Python code: 
 ```
 #Libraries

@@ -17,9 +17,7 @@ from micromlgen import port
 Follow this repositorie:
 [Supervised ML algorithms](https://github.com/puldavid87/ITU-DK/tree/main/SUPERVISED%20MACHINE%20LEARNING)
 
-#functions.cpp:
-Low-dimensional training set is allocated in FLash memory (const PROGMEM)
-Before to deploy k-NN, normalize the income data
+Before to deploy ML algorithms, normalize the income data
 * y = (x – min) / (max – min)
 
 PCA.h and SVM are export models

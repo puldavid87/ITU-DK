@@ -24,3 +24,36 @@ Before to deploy ML algorithms, normalize the income data
 * y = (x – min) / (max – min)
 
 PCA.h and SVM are export models
+
+### Python code: 
+```
+import pandas as pd
+import numpy as np
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from micromlgen import port
+from sklearn.preprocessing import MinMaxScaler
+
+
+dataset=pd.read_csv('dataset.csv', sep=',')
+sc=MinMaxScaler()
+
+X= dataset.iloc[:307,:-1].values
+y=dataset.iloc[:307,-1].values
+X=sc.fit_transform(X)
+X_train, X_test,y_train,y_test=train_test_split(X,y,test_size=0.2, random_state=0)
+
+classifier=SVC(kernel='poly', random_state=0)
+classifier.fit(X_train,y_train)
+
+
+y_pred=classifier.predict(X_test)
+print(confusion_matrix(y_test,y_pred))
+###export
+export=SVC(kernel='poly', gamma=0.001).fit(X, y)
+file=open("model.h")
+
+with open('svm.h', 'w') as file:
+    file.write(port(export))
+```

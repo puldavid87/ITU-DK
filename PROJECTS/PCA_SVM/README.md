@@ -52,7 +52,6 @@ y_pred=classifier.predict(X_test)
 print(confusion_matrix(y_test,y_pred))
 ###export
 export=SVC(kernel='poly', gamma=0.001).fit(X, y)
-file=open("model.h")
 
 with open('svm.h', 'w') as file:
     file.write(port(export))
